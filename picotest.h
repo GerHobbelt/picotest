@@ -22,6 +22,10 @@
 #ifndef picotest_h
 #define picotest_h
 
+#if defined(_MSC_VER) && !defined(__attribute__)
+#define __attribute__(x)  /* empty */
+#endif
+
 void note(const char *fmt, ...)  __attribute__((format (printf, 1, 2)));
 void _ok(int cond, const char *fmt, ...) __attribute__((format (printf, 2, 3)));
 #define ok(cond) _ok(cond, "%s %d", __FILE__, __LINE__)
